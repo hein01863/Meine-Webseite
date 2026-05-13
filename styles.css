@@ -312,9 +312,9 @@ p {
 .hero-lantern {
   position: absolute;
   bottom: var(--hero-padding-bottom);
-  right: clamp(16px, calc((100vw - 1280px) / 2 - 164px), 176px);
+  right: clamp(16px, calc((100vw - 1280px) / 2 - 124px), 216px);
   z-index: 0;
-  width: clamp(178px, 15vw, 230px);
+  width: clamp(178px, 12vw, 230px);
   height: auto;
   overflow: visible;
   pointer-events: none;
@@ -1023,6 +1023,12 @@ p {
     padding-top: 0;
   }
 
+}
+
+@media (max-width: 1500px) {
+  .hero-lantern {
+    display: none;
+  }
 }
 
 @media (max-width: 760px) {

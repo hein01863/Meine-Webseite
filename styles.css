@@ -13,7 +13,7 @@
 
   --accent: #2f4a3a;
   --accent-blue: #32485f;
-  --accent-ink: #ffffff;
+  --accent-ink: #f2ede4;
   --rule: rgba(26, 26, 24, 0.12);
 
   --color-bg: var(--bg-warm);
@@ -522,7 +522,7 @@ p {
 }
 
 .button-on-dark {
-  border-color: rgba(255, 255, 255, 0.78);
+  border-color: var(--color-on-accent);
   background: var(--color-on-accent);
   color: var(--color-accent);
 }
@@ -548,6 +548,10 @@ p {
   max-width: 560px;
   color: var(--color-text-2);
   font: var(--type-body-lg);
+}
+
+.section-copy-column p + p {
+  margin-top: var(--space-4);
 }
 
 .section-dark .section-copy-column p {
@@ -816,6 +820,32 @@ p {
   font: var(--type-caption);
 }
 
+.final-cta {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
+  border-top: var(--border-hairline);
+  background: var(--bg-warm);
+  color: var(--color-text);
+}
+
+.final-cta-inner {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-6);
+  text-align: center;
+}
+
+.final-cta h2 {
+  max-width: 880px;
+  color: var(--color-text);
+}
+
+.final-cta .button-primary {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
 /* About page */
 
 .about-page {
@@ -901,7 +931,7 @@ p {
 }
 
 .about-row-right {
-  padding-top: calc(44px + var(--space-5));
+  padding-top: 0;
 }
 
 .about-green-box .about-row {

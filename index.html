@@ -8,6 +8,9 @@
       name="description"
       content="Strategie und Kommunikation für Kommunalwahlen: Themen, Sprache, Auftritt und Routinen für Kandidaturen vor Ort."
     >
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -224,7 +227,7 @@
       </section>
 
       <!-- Positioning -->
-      <section class="section section-dark service-positioning" aria-labelledby="service-positioning-title">
+      <section class="section section-dark service-positioning section-fade" aria-labelledby="service-positioning-title">
         <div class="section-inner">
           <p class="eyebrow">Strategische Kommunikationsbegleitung</p>
           <h2 id="service-positioning-title">
@@ -261,7 +264,7 @@
       <!-- Process -->
       <section class="section process" id="prozess" aria-labelledby="process-title">
         <div class="section-inner process-inner">
-          <div class="process-copy">
+          <div class="process-copy section-fade">
             <p class="eyebrow">Wie die Begleitung funktioniert</p>
             <h2 id="process-title">
               <span>Vom ersten Gespräch</span>
@@ -283,7 +286,7 @@
           </div>
 
           <div class="process-grid" aria-label="Sechs Stationen der Begleitung">
-            <article class="info-card process-step">
+            <article class="info-card process-step section-fade step-stagger">
               <h3>Ausgangslage klären</h3>
               <p>
                 Du weißt, wo deine Kandidatur kommunikativ steht und welche
@@ -291,7 +294,7 @@
               </p>
             </article>
 
-            <article class="info-card process-step">
+            <article class="info-card process-step section-fade step-stagger">
               <h3>Profil schärfen</h3>
               <p>
                 Du kannst klarer sagen, wofür du stehst und warum Leute dir das
@@ -299,14 +302,14 @@
               </p>
             </article>
 
-            <article class="info-card process-step">
+            <article class="info-card process-step section-fade step-stagger">
               <h3>Themen ordnen</h3>
               <p>
                 Welche Themen tragen dich, welche kosten nur Aufmerksamkeit?
               </p>
             </article>
 
-            <article class="info-card process-step">
+            <article class="info-card process-step section-fade step-stagger">
               <h3>Sprache und Gestaltung entwickeln</h3>
               <p>
                 Dein Auftritt klingt nach dir, nicht nach Vorlage. In einer
@@ -314,7 +317,7 @@
               </p>
             </article>
 
-            <article class="info-card process-step">
+            <article class="info-card process-step section-fade step-stagger">
               <h3>Formate und Routinen bauen</h3>
               <p>
                 Aus Terminen und Anlässen entsteht ein Rhythmus, den dein Umfeld
@@ -322,7 +325,7 @@
               </p>
             </article>
 
-            <article class="info-card process-step">
+            <article class="info-card process-step section-fade step-stagger">
               <h3>Anwendung einüben</h3>
               <p>
                 Du nutzt das System im Alltag, testest es mit deinem Team und
@@ -336,7 +339,7 @@
       <!-- Outcomes -->
       <section class="section section-dark outcomes" id="ergebnisse" aria-labelledby="outcomes-title">
         <div class="section-inner outcomes-inner">
-          <div class="outcomes-copy">
+          <div class="outcomes-copy section-fade">
             <p class="eyebrow">Was daraus entsteht</p>
             <h2 id="outcomes-title">Was du am Ende in der Hand hast</h2>
             <p>
@@ -346,7 +349,7 @@
           </div>
 
           <div class="outcome-grid" aria-label="Ergebnisse der Begleitung">
-            <article class="info-card info-card-on-dark outcome-card">
+            <article class="info-card info-card-on-dark outcome-card section-fade card-stagger">
               <span class="outcome-number">01</span>
               <h3>Du weißt, was du sagst.</h3>
               <p>
@@ -364,7 +367,7 @@
               </div>
             </article>
 
-            <article class="info-card info-card-on-dark outcome-card">
+            <article class="info-card info-card-on-dark outcome-card section-fade card-stagger">
               <span class="outcome-number">02</span>
               <h3>Dein Auftritt klingt nach dir.</h3>
               <p>
@@ -383,7 +386,7 @@
               </div>
             </article>
 
-            <article class="info-card info-card-on-dark outcome-card">
+            <article class="info-card info-card-on-dark outcome-card section-fade card-stagger">
               <span class="outcome-number">03</span>
               <h3>Dein Team kann loslegen.</h3>
               <p>
@@ -401,7 +404,7 @@
             </article>
           </div>
 
-          <div class="outcomes-cta">
+          <div class="outcomes-cta section-fade">
             <a
               class="button button-on-dark"
               href="https://cal.com/dein-name/erstgespraech"
@@ -415,7 +418,7 @@
       </section>
 
       <section class="section final-cta" id="kontakt" aria-labelledby="final-cta-title">
-        <div class="section-inner final-cta-inner">
+        <div class="section-inner final-cta-inner section-fade">
           <h2 id="final-cta-title">
             Du weißt am besten, wo du stehst. Lass uns schauen, was der nächste
             Schritt wäre.
@@ -443,5 +446,30 @@
         </nav>
       </div>
     </footer>
+    <script>
+      const revealItems = document.querySelectorAll('.section-fade');
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add('visible');
+            window.setTimeout(() => {
+              entry.target.classList.add('reveal-complete');
+            }, 1200);
+            revealObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.15 });
+
+        revealItems.forEach((item) => revealObserver.observe(item));
+      } else {
+        revealItems.forEach((item) => {
+          item.classList.add('visible', 'reveal-complete');
+        });
+      }
+    </script>
   </body>
 </html>

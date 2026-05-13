@@ -8,6 +8,9 @@
       name="description"
       content="Über Bastian Schenk: strategische Kommunikationsbegleitung für kommunalpolitische Kandidaturen."
     >
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -31,7 +34,7 @@
 
     <main id="top">
       <section class="section about-page" aria-labelledby="about-hero-title">
-        <div class="section-inner about-page-inner">
+        <div class="section-inner about-page-inner section-fade">
           <p class="eyebrow">Über Bastian Schenk</p>
           <h1 id="about-hero-title">
             <span>Ich bringe</span>
@@ -69,7 +72,7 @@
 
       <section class="section about-green-box" aria-labelledby="attention-title">
         <div class="section-inner about-green-inner">
-          <div class="about-row about-row-first">
+          <div class="about-row about-row-first section-fade">
             <div class="about-row-left">
               <h2 id="attention-title">Worauf ich achte</h2>
             </div>
@@ -87,7 +90,7 @@
             </div>
           </div>
 
-          <div class="about-row">
+          <div class="about-row section-fade">
             <div class="about-row-left">
               <h2 id="principles-title">Woran ich festhalte</h2>
             </div>
@@ -108,7 +111,7 @@
 
       <section class="section contact" id="kontakt" aria-labelledby="contact-title">
         <div class="section-inner contact-inner">
-          <div class="contact-copy">
+          <div class="contact-copy section-fade">
             <p class="eyebrow">Erstgespräch</p>
             <h2 id="contact-title">Lass uns kurz schauen, ob es passt.</h2>
             <p>
@@ -126,7 +129,7 @@
             </a>
           </div>
 
-          <div class="contact-card" aria-label="Themen im Erstgespräch">
+          <div class="contact-card section-fade" aria-label="Themen im Erstgespräch">
             <h3>Was wir im Erstgespräch klären:</h3>
             <ul class="contact-question-list">
               <li>
@@ -159,5 +162,30 @@
         </nav>
       </div>
     </footer>
+    <script>
+      const revealItems = document.querySelectorAll('.section-fade');
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add('visible');
+            window.setTimeout(() => {
+              entry.target.classList.add('reveal-complete');
+            }, 1200);
+            revealObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.15 });
+
+        revealItems.forEach((item) => revealObserver.observe(item));
+      } else {
+        revealItems.forEach((item) => {
+          item.classList.add('visible', 'reveal-complete');
+        });
+      }
+    </script>
   </body>
 </html>

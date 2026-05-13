@@ -312,7 +312,7 @@ p {
 .hero-lantern {
   position: absolute;
   bottom: var(--hero-padding-bottom);
-  right: clamp(-120px, calc((100vw - 1280px) / 2 - 164px), 176px);
+  right: clamp(16px, calc((100vw - 1280px) / 2 - 164px), 176px);
   z-index: 0;
   width: clamp(178px, 15vw, 230px);
   height: auto;
